@@ -12,7 +12,8 @@ app.all("/", (req, res) => {
 
 //READ
 app.get("/todos", (req, res) => {
-  res.json(todos);
+  if (todos.length === 0) res.status(204).json(todos);
+  else res.status(200).json(todos);
 });
 
 //CREATE
