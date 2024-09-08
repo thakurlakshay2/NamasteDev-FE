@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Server Sent Events</title>
+  </head>
+  <body>
+    <h1>Server Sent Events</h1>
+    <div id="sse-data-container"></div>
+    <script>
+      //Setup SSE connection
+
+      const eventSource = new EventSource("/sse");
+
+      eventSource.onmessage = (event) => {
+        console.log(event.data);
+        const msg = event.data;
+        const chatBox = document.getElementById("sse-data-container");
+        const newMessage = document.createElement("li");
+        newMessage.textContent = msg;
+        chatBox.appendChild(newMessage);
+        chatBox.scrollTop = chatBox.scrollHeight; // Auto scroll to the bottom
+      };
+    </script>
+  </body>
+</html>
