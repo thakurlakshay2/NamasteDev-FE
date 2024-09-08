@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Long Pollng</title>
+  </head>
+  <body>
+    <h1>Long polling</h1>
+    <div id="data-container"></div>
+    <script>
+      async function getData(lastData) {
+        try {
+          const response = await fetch(`/getData?lastData=${lastData}`);
+          const result = await response.json();
+          document.getElementById("data-container").innerHTML = result.data;
+          getData(result.data); // Recursion call to server for long polling
+        } catch (e) {
+          console.log(e);
+          //handle error corner cases here
+        }
+      }
+      getData();
+
+      clearInterval(intervalId);
+    </script>
+  </body>
+</html>
