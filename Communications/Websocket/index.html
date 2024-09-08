@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket Chatroom</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      #chat-box {
+        width: 100%;
+        max-width: 600px;
+        height: 300px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        overflow-y: scroll;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      #message-input {
+        width: calc(100% - 100px);
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      #send-button {
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #send-button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>WebSocket Chatroom</h2>
+
+    <div id="chat-box"></div>
+    <form id="chat-form">
+      <input
+        type="text"
+        id="message-input"
+        placeholder="Enter your message..."
+        required
+      />
+      <button type="submit" id="send-button">Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      // Create a WebSocket connection
+      const socket = io();
+
+      // When the WebSocket connection is open
+      //   socket.onopen = function (event) {
+      //     console.log("Connected to the WebSocket server");
+      //   };
+
+      // When a message is received from the server
+
+      // Handle form submission
+      document
+        .getElementById("chat-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form from submitting normally
+
+          // Get the message from the input field
+          const messageInput = document.getElementById("message-input");
+          const message = messageInput.value;
+
+          //emit message to everyone
+          socket.emit("chat_message", message);
+          // Send the message through the WebSocket connection
+          //   socket.send(message);
+
+          // Log the message and clear the input field
+          console.log("Message sent:", message);
+          messageInput.value = "";
+        });
+
+      socket.on("chat_message", (msg) => {
+        console.log(" i m receiveing");
+        const chatBox = document.getElementById("chat-box");
+        const newMessage = document.createElement("li");
+        newMessage.textContent = msg;
+        chatBox.appendChild(newMessage);
+        chatBox.scrollTop = chatBox.scrollHeight; // Auto scroll to the bottom
+      });
+    </script>
+  </body>
+</html>
