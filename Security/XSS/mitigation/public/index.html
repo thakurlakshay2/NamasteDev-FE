@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- loading unsecure file -->
+    <!-- we want to stop resource loading from this site -->
+    <script src="http://unsecure.com/abc.js"></script>
+    <script nonce="randomKey">
+      console.log(" my trusted code");
+    </script>
+    <script>
+      console.log(" my untrusted  code");
+    </script>
+  </head>
+  <body>
+    <h1>Page for CORS demo!</h1>
+    <img
+      src="https://www.linkedin.com/feed/?doFeedRefresh=true&nis=true&lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BiAdw6DBgSkewalH4Cji0GA%3D%3D"
+    />
+  </body>
+</html>
