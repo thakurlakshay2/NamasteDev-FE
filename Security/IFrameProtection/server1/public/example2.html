@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Theft via javascript</title>
+    <script>
+      function setCookie(name, value, days) {
+        var expires = "";
+
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + days * 60 * 60 * 60 * 1000);
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + ";path=/";
+      }
+      // In the parent we are setting a secret cookie via a setCookie function
+      setCookie("parentCookie", "secret", 1);
+    </script>
+  </head>
+  <body>
+    <h1>Data theft via javascript</h1>
+    <!-- Sandbox basically puts restriction on the iFrame from the parent to child , 'allow-same-origin ' restricts script running -->
+    <iframe
+      src="http://localhost:3011/iFrame-website2"
+      sandbox="allow-same-origin"
+    ></iframe>
+    <button id="overlay-button">Click Me</button>
+  </body>
+  <script>
+    document.getElementById("overlay-button").addEventListener("click", () => {
+      console.log(" Main content button is clicked");
+    });
+  </script>
+</html>

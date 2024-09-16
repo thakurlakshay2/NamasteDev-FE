@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IFrame website</title>
+  </head>
+  <body>
+    <h1>Child IFrame Example</h1>
+    <h1>ClickJacking example below</h1>
+    <button
+      style="background-color: red"
+      onclick="alert('Clicking clickjacked link')"
+    >
+      Click Me!
+    </button>
+    <script>
+      if (top != self) {
+        top.location = self.location;
+      }
+    </script>
+  </body>
+</html>
