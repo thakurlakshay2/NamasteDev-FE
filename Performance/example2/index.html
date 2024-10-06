@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Network Optimization Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Critical CSS inlined for faster initial render */
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="logo.svg" alt="Logo" class="logo" />
+        <h1>Network Optimization Techniques</h1>
+      </header>
+
+      <div class="optimization-technique">
+        <h2>1. Separate CSS File</h2>
+        <p>
+          Most styles are in an external CSS file, but critical CSS is inlined.
+        </p>
+      </div>
+
+      <div class="optimization-technique">
+        <h2>2. External Images</h2>
+        <p>Images are stored as separate files:</p>
+        <img src="icon.png" alt="Icon" class="icon" />
+        <img src="logo.svg" alt="Logo" class="logo" />
+      </div>
+
+      <div class="optimization-technique">
+        <h2>2. Base64 Encoded Images</h2>
+        <p>
+          Small images can be Base64 encoded and included directly in the HTML
+          or CSS. Here's an example:
+        </p>
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAvSURBVHgB7ZOxDQAgDAMd5m/5AxBLpEjJN+7IPOJHIEY3rkQf2ZX77qnClEtYCrwZEWyxnvI+LAAAAABJRU5ErkJggg=="
+          alt="Base64 encoded icon"
+        />
+      </div>
+
+      <div class="optimization-technique">
+        <h2>3. Inline SVG</h2>
+        <p>Small SVGs can be inlined to save HTTP requests:</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="50"
+          height="50"
+          viewBox="0 0 50 50"
+          class="inline-svg"
+        >
+          <rect width="50" height="50" fill="#34495e" />
+          <text
+            x="25"
+            y="30"
+            font-family="Arial"
+            font-size="20"
+            fill="white"
+            text-anchor="middle"
+          >
+            SVG
+          </text>
+        </svg>
+      </div>
+
+      <div class="optimization-technique">
+        <h2>4. Async Script Loading</h2>
+        <p>Non-critical scripts are loaded asynchronously:</p>
+      </div>
+    </div>
+
+    <script src="main.js" async></script>
+  </body>
+</html>

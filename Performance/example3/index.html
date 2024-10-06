@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sync, Async, and Defer JS Example</title>
+  </head>
+  <body>
+    <h1>JavaScript Loading Methods: Sync, Async, Defer</h1>
+
+    <p>This text will be loaded first.</p>
+
+    <!-- Synchronous Script: This will block rendering until it is fully loaded and executed -->
+    <script>
+      console.log(
+        "Synchronous Script: This blocks the HTML rendering and is executed first."
+      );
+      //   alert(
+      //     "Synchronous Script: This blocks the HTML rendering and is executed first."
+      //   );
+    </script>
+
+    <p>More content after the synchronous script is loaded and executed.</p>
+
+    <!-- Asynchronous Script: This script loads and executes as soon as it's available, without blocking -->
+    <script async src="async-script.js"></script>
+
+    <p>Even more content after the async script is requested.</p>
+
+    <!-- Deferred Script: This script will be executed after the HTML document is fully parsed -->
+    <script defer src="defer-script.js"></script>
+
+    <p>
+      Final content that is displayed while the deferred script is waiting for
+      HTML parsing to finish.
+    </p>
+  </body>
+</html>

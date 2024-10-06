@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resource Hints Example</title>
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles/main.css" as="style" />
+    <link rel="preload" href="scripts/app.js" as="script" />
+    <link rel="preload" href="images/hero.jpg" as="image" />
+
+    <!-- Prefetch resources for future navigation -->
+    <link rel="prefetch" href="about.html" />
+
+    <!-- Preconnect to important third-party origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- DNS-prefetch for domains that will be connected to -->
+    <link rel="dns-prefetch" href="https://api.example.com" />
+    <link rel="dns-prefetch" href="https://analytics.example.com" />
+
+    <!-- Actually load the stylesheet -->
+    <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- Load Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Load Images / comment below line to see different in image connection time-->
+    <!-- <link rel="preconnect" href="https://cdn.glitch.global" crossorigin /> -->
+    <link rel="dns-prefetch" href="https://cdn.glitch.global" crossorigin />
+  </head>
+  <body>
+    <header>
+      <h1>Resource Hints Example</h1>
+    </header>
+    <main>
+      <img src="images/hero.jpg" alt="Hero image" width="800" height="400" />
+      <p>This is an example page demonstrating various resource hints.</p>
+      <div class="icon-container">
+        <img
+          src="https://web.dev/static/learn/performance/resource-hints/image/fig-1_1920.png"
+          alt="Icon 1"
+        />
+        <img
+          src="https://cdn.glitch.global/db01a8e4-9230-4c5c-977d-85d0e0c3e74c/image-1.jpg?v=1669198400523"
+          alt="Icon 2"
+        />
+        <img
+          src="https://cdn.glitch.global/d9187237-9434-448a-ac71-ebc3ef084888/learn-performance-welcome.png?v=1669119132067"
+          alt="Icon 3"
+        />
+      </div>
+      <a href="about.html">Go to About page</a>
+    </main>
+
+    <!-- Load the preloaded script -->
+    <script src="scripts/app.js"></script>
+  </body>
+</html>

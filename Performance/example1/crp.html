@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Critical Render Path Demo</title>
+    <style>
+      /* Critical CSS - only styles necessary for above-the-fold content */
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      .critical-content {
+        background-color: #e74c3c;
+        color: white;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+    </style>
+    <noscript id="deferred-styles">
+      <style>
+        /* Non-critical CSS */
+        .non-critical-content {
+          background-color: #3498db;
+          color: white;
+          padding: 10px;
+          margin-top: 20px;
+          border-radius: 5px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .delayed-content {
+          background-color: #2ecc71;
+          color: white;
+          padding: 10px;
+          margin-top: 20px;
+          border-radius: 5px;
+          transition: all 0.3s ease;
+        }
+        .delayed-content:hover {
+          transform: scale(1.05);
+        }
+      </style>
+    </noscript>
+    <script>
+      var loadDeferredStyles = function () {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+      };
+      var raf =
+        window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
+      if (raf)
+        raf(function () {
+          window.setTimeout(loadDeferredStyles, 0);
+        });
+      else window.addEventListener("load", loadDeferredStyles);
+    </script>
+  </head>
+  <body>
+    <h1>Critical Render Path Demo</h1>
+
+    <div class="critical-content">
+      <h2>Critical Content</h2>
+      <p>
+        This content is styled with critical CSS and will render immediately.
+      </p>
+    </div>
+
+    <div class="non-critical-content">
+      <h2>Non-Critical Content</h2>
+      <p>
+        This content is styled with non-critical CSS, which may render after a
+        slight delay.
+      </p>
+    </div>
+
+    <div id="delayed-content"></div>
+
+    <script async>
+      console.log("This script doesn't block rendering");
+    </script>
+
+    <script>
+      window.addEventListener("load", function () {
+        var delayedContent = document.getElementById("delayed-content");
+        delayedContent.innerHTML =
+          '<div class="delayed-content"><h2>Delayed Content</h2><p>This content is added after the page load event.</p></div>';
+      });
+    </script>
+  </body>
+</html>
