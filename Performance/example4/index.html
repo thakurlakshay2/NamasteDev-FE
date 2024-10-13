@@ -7,8 +7,9 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="styles/main.css" as="style" />
-    <link rel="preload" href="scripts/app.js" as="script" />
+    <link rel="preload" href="scripts/app.js" as="script" fetch- />
     <link rel="preload" href="images/hero.jpg" as="image" />
+    <link rel="preload" href="images/hero.jpg" as="image" fetchpriority="low" />
 
     <!-- Prefetch resources for future navigation -->
     <link rel="prefetch" href="about.html" />
@@ -21,8 +22,20 @@
     <link rel="dns-prefetch" href="https://api.example.com" />
     <link rel="dns-prefetch" href="https://analytics.example.com" />
 
+    <!-- Prerender example -->
+    <link rel="prerender" href="https://example.com/next-page.html" />
+
     <!-- Actually load the stylesheet -->
     <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- Preload CSS without blocking any other resource -->
+    <link
+      rel="preload"
+      as="style"
+      href="styles/main.css"
+      fetchpriority="low"
+      onload="this.rel='stylesheet'"
+    />
 
     <!-- Load Google Fonts -->
     <link
@@ -45,14 +58,17 @@
         <img
           src="https://web.dev/static/learn/performance/resource-hints/image/fig-1_1920.png"
           alt="Icon 1"
+          fetchpriority="low"
         />
         <img
           src="https://cdn.glitch.global/db01a8e4-9230-4c5c-977d-85d0e0c3e74c/image-1.jpg?v=1669198400523"
           alt="Icon 2"
+          fetchpriority="low"
         />
         <img
           src="https://cdn.glitch.global/d9187237-9434-448a-ac71-ebc3ef084888/learn-performance-welcome.png?v=1669119132067"
           alt="Icon 3"
+          fetchpriority="high"
         />
       </div>
       <a href="about.html">Go to About page</a>
