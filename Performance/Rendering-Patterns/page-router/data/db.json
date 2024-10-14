@@ -1,0 +1,46 @@
+{
+  "tutorials": [
+    {
+      "id": 1,
+      "image": "https://img.freepik.com/free-vector/flat-geometric-background_23-2148957201.jpg",
+      "title": "React Fundamentals for Beginners",
+      "views": "254K",
+      "published": "2 months ago"
+    },
+    {
+      "id": 2,
+      "image": "https://img.freepik.com/free-vector/gradient-glassmorphism-background_23-2149489059.jpg?size=626&ext=jpg",
+      "title": "Data Science with Python: Getting Started",
+      "views": "189K",
+      "published": "5 months ago"
+    },
+    {
+      "id": 3,
+      "image": "https://fps.cdnpk.net/meta-tags-social/og-fb-logo-en.png?w=1200",
+      "title": "Mastering Asynchronous JavaScript",
+      "views": "327K",
+      "published": "1 year ago"
+    },
+    {
+      "id": 4,
+      "image": "https://img.freepik.com/free-photo/abstract-colorful-splash-3d-background-generative-ai-background_60438-2509.jpg",
+      "title": "Docker Containers Explained",
+      "views": "98K",
+      "published": "3 weeks ago"
+    },
+    {
+      "id": 5,
+      "image": "https://img.freepik.com/free-photo/vibrant-autumn-maple-leaves-nature-beauty-showcased-generated-by-ai_188544-15039.jpg",
+      "title": "Introduction to Machine Learning Algorithms",
+      "views": "412K",
+      "published": "7 months ago"
+    },
+    {
+      "id": 6,
+      "image": "https://fps.cdnpk.net/images/home/subhome-vectors.webp?w=649&h=649",
+      "title": "Building Reusable Vue.js Components",
+      "views": "76K",
+      "published": "4 months ago"
+    }
+  ]
+}
